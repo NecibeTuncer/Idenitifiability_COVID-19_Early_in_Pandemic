@@ -1,0 +1,41 @@
+WRITE "A Corono Virus MODEL OF 6 STATE VARIABLES WITH KNOWN INITIAL CONDITIONS"$
+
+
+% B_ IS THE VARIABLE VECTOR
+
+B_:={y1,y2,x1,x2,x3,x4,x5,x6}$
+
+FOR EACH EL_ IN B_ DO DEPEND EL_,T$
+%B1_ IS THE UNKNOWN PARAMETER VECTOR
+
+B1_:={beta1,beta2,beta3,k,rho,gamma1,gamma2,d,alpha,r}$
+
+%NUMBER OF STATES
+NX_:=6$
+%NUMBER OF INPUTS 
+NU_:=0$
+%NUMBER OF OUTPUTS
+NY_:=2$
+
+%MODEL  EQUATIONS
+C_:={df(x1,t) = - x1*(beta1*x2 + beta2*x3 + beta3*x4)/(x1 + x2 + x3 + x4 + x6),
+     df(x2,t) = x1*(beta1*x2 + beta2*x3 + beta3*x4)/(x1 + x2 + x3 + x4 + x6) - k*x2,
+     df(x3,t) = (1-rho)*k*x2 - gamma1*x3,
+     df(x4,t) = rho*k*x2 - (alpha + gamma2)*x4,
+     df(x5,t) = alpha*x4 - (r + d)*x5,
+     df(x6,t) = gamma1*x3 + r*x5 + gamma2*x4,
+     y1 = rho*k*x2,
+     y2 = d*x5}$
+
+FLAG_:=1$
+% In case of FLAG=0 the user has to enter the numerical values of B1_ in the vector B2_ , for example:
+%FLAG_:=0$
+%B2_:={betau=1,betav=2,mu=1,delta1=3,qv=4,muu=1,qu =2, muv = 1, delta2 =5}$
+
+daisy()$
+
+%VALUES OF INITIAL CONDITIONS
+ICK_:={x1=5,x2=1,x3=0,x4=0,x5=0,x6=0}$
+ICUNK_:={}$
+CONDINIZ()$
+END$

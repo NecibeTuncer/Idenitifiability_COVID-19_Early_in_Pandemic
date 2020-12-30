@@ -1,0 +1,2000 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     81457,       1992]
+NotebookOptionsPosition[     79229,       1947]
+NotebookOutlinePosition[     79622,       1963]
+CellTagsIndexPosition[     79579,       1960]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellLabel->"In[1]:=",ExpressionUUID->"45505a23-a7ef-4d64-b732-313f33f96cc4"],
+
+Cell[BoxData[{
+ RowBox[{"Clear", "[", 
+  RowBox[{
+  "beta1hat", ",", "beta2hat", ",", "beta3hat", ",", "khat", ",", "gamma1hat",
+    ",", "dhat", ",", "rhohat", ",", "alphahat", ",", "rhat", ",", 
+   "gamma2hat"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"alpha", " ", "=", " ", "alphahat"}], ";", "\[IndentingNewLine]", 
+    
+    RowBox[{"alphahat", " ", "=", " ", "alpha"}], ";"}], "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.7945694708276463`*^9, 3.794569476134634*^9}, {
+  3.794569509918577*^9, 3.794569594275996*^9}, {3.79456972885445*^9, 
+  3.7945697344687653`*^9}, {3.797255806897937*^9, 3.797255838181686*^9}, {
+  3.800720169798274*^9, 3.800720214676668*^9}, {3.80245265493717*^9, 
+  3.80245267943943*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"a2244e5d-c8d9-4b64-bc96-e77182d982d0"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"polys", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"beta3", "*", "k", "*", "rho", "*", 
+       RowBox[{"(", 
+        RowBox[{"alpha", "-", "gamma1", "+", "gamma2"}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "alphahat"}], "*", "beta1hat", "*", "dhat"}], ")"}]}], 
+      "-", 
+      RowBox[{"(", 
+       RowBox[{"beta3hat", "*", "khat", "*", "rhohat", "*", 
+        RowBox[{"(", 
+         RowBox[{"alphahat", "-", "gamma1hat", "+", "gamma2hat"}], ")"}], "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "alpha"}], "*", "beta1", "*", "d"}], ")"}]}], ")"}]}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "beta1"}], "*", "gamma1"}], "+", 
+         RowBox[{"beta2", "*", "k", "*", "rho"}], "-", 
+         RowBox[{"beta2", "*", "k"}], "-", 
+         RowBox[{"beta3", "*", "k", "*", "rho"}]}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{"-", "beta1hat"}], ")"}]}], " ", "-", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "beta1hat"}], "*", "gamma1hat"}], "+", 
+         RowBox[{"beta2hat", "*", "khat", "*", "rhohat"}], "-", 
+         RowBox[{"beta2hat", "*", "khat"}], "-", 
+         RowBox[{"beta3hat", "*", "khat", "*", "rhohat"}]}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{"-", "beta1"}], ")"}]}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"beta3", "*", "k", "*", "rho", "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"alpha", "*", "d"}], "+", 
+         RowBox[{"alpha", "*", "r"}], "-", 
+         RowBox[{"d", "*", "gamma1"}], "+", 
+         RowBox[{"d", "*", "gamma2"}], "-", 
+         RowBox[{"gamma1", "*", "r"}], "+", 
+         RowBox[{"gamma2", "*", "r"}]}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "alphahat"}], "*", "beta1hat", "*", "dhat"}], ")"}]}], 
+      " ", "-", 
+      RowBox[{"(", 
+       RowBox[{"beta3hat", "*", "khat", "*", "rhohat", "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"alphahat", "*", "dhat"}], "+", 
+          RowBox[{"alphahat", "*", "rhat"}], "-", 
+          RowBox[{"dhat", "*", "gamma1hat"}], "+", 
+          RowBox[{"dhat", "*", "gamma2hat"}], "-", 
+          RowBox[{"gamma1hat", "*", "rhat"}], "+", 
+          RowBox[{"gamma2hat", "*", "rhat"}]}], ")"}], "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "alpha"}], "*", "beta1", "*", "d"}], ")"}]}], ")"}]}], 
+     ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "alpha"}], "*", "beta1", "*", "d", "*", 
+         RowBox[{"(", 
+          RowBox[{"alpha", "+", "d", "+", "gamma2", "+", "r"}], ")"}]}], 
+        ")"}], "*", "beta3hat", "*", "khat", "*", "rhohat", "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "alphahat"}], "+", "gamma1hat", "-", "gamma2hat"}], 
+        ")"}]}], "-", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "alphahat"}], "*", "beta1hat", "*", "dhat", "*", 
+          RowBox[{"(", 
+           RowBox[{"alphahat", "+", "dhat", "+", "gamma2hat", "+", "rhat"}], 
+           ")"}]}], ")"}], "*", "beta3", "*", "k", "*", "rho", "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "alpha"}], "+", "gamma1", "-", "gamma2"}], ")"}]}], 
+       ")"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"alpha", "*", 
+          RowBox[{"d", "^", "2"}]}], "+", 
+         RowBox[{"2", "*", "alpha", "*", "d", "*", "r"}], "+", 
+         RowBox[{"alpha", "*", 
+          RowBox[{"r", "^", "2"}]}], "-", 
+         RowBox[{
+          RowBox[{"d", "^", "2"}], "*", "gamma1"}], "+", 
+         RowBox[{
+          RowBox[{"d", "^", "2"}], "*", "gamma2"}], "-", 
+         RowBox[{"2", "*", "d", "*", "gamma1", "*", "r"}], "+", 
+         RowBox[{"2", "*", "d", "*", "gamma2", "*", "r"}], "-", 
+         RowBox[{"gamma1", "*", 
+          RowBox[{"r", "^", "2"}]}], "+", 
+         RowBox[{"gamma2", "*", 
+          RowBox[{"r", "^", "2"}]}]}], ")"}], "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "alphahat"}], "+", "gamma1hat", "-", "gamma2hat"}], 
+        ")"}]}], "-", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"alphahat", "*", 
+           RowBox[{"dhat", "^", "2"}]}], "+", 
+          RowBox[{"2", "*", "alphahat", "*", "dhat", "*", "rhat"}], "+", 
+          RowBox[{"alphahat", "*", 
+           RowBox[{"rhat", "^", "2"}]}], "-", 
+          RowBox[{
+           RowBox[{"dhat", "^", "2"}], "*", "gamma1hat"}], "+", 
+          RowBox[{
+           RowBox[{"dhat", "^", "2"}], "*", "gamma2hat"}], "-", 
+          RowBox[{"2", "*", "dhat", "*", "gamma1hat", "*", "rhat"}], "+", 
+          RowBox[{"2", "*", "dhat", "*", "gamma2hat", "*", "rhat"}], "-", 
+          RowBox[{"gamma1hat", "*", 
+           RowBox[{"rhat", "^", "2"}]}], "+", 
+          RowBox[{"gamma2hat", "*", 
+           RowBox[{"rhat", "^", "2"}]}]}], ")"}], "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "alpha"}], "+", "gamma1", "-", "gamma2"}], ")"}]}], 
+       ")"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"alpha", "*", "d", "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "alpha"}], "*", "beta1", "*", "gamma1"}], "+", 
+         RowBox[{"alpha", "*", "beta2", "*", "k", "*", "rho"}], "-", 
+         RowBox[{"alpha", "*", "beta2", "*", "k"}], "-", 
+         RowBox[{"beta1", "*", "d", "*", "gamma1"}], "-", 
+         RowBox[{"beta1", "*", "gamma1", "*", "gamma2"}], "-", 
+         RowBox[{"beta1", "*", "gamma1", "*", "r"}], "+", 
+         RowBox[{"beta2", "*", "d", "*", "k", "*", "rho"}], "-", 
+         RowBox[{"beta2", "*", "d", "*", "k"}], "+", 
+         RowBox[{"beta2", "*", "gamma2", "*", "k", "*", "rho"}], "-", 
+         RowBox[{"beta2", "*", "gamma2", "*", "k"}], "+", 
+         RowBox[{"beta2", "*", "k", "*", "r", "*", "rho"}], "-", 
+         RowBox[{"beta2", "*", "k", "*", "r"}], "-", 
+         RowBox[{"beta3", "*", "d", "*", "k", "*", "rho"}], "-", 
+         RowBox[{"beta3", "*", "gamma1", "*", "k", "*", "rho"}], "-", 
+         RowBox[{"beta3", "*", "k", "*", "r", "*", "rho"}]}], ")"}], "*", 
+       "beta3hat", "*", "khat", "*", "rhohat", "*", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "alphahat"}], "+", "gamma1hat", "-", "gamma2hat"}], 
+        ")"}]}], " ", "-", 
+      RowBox[{"(", 
+       RowBox[{"alphahat", "*", "dhat", "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"-", "alphahat"}], "*", "beta1hat", "*", "gamma1hat"}], 
+          "+", 
+          RowBox[{"alphahat", "*", "beta2hat", "*", "khat", "*", "rhohat"}], 
+          "-", 
+          RowBox[{"alphahat", "*", "beta2hat", "*", "khat"}], "-", 
+          RowBox[{"beta1hat", "*", "dhat", "*", "gamma1hat"}], "-", 
+          RowBox[{"beta1hat", "*", "gamma1hat", "*", "gamma2hat"}], "-", 
+          RowBox[{"beta1hat", "*", "gamma1hat", "*", "rhat"}], "+", 
+          RowBox[{"beta2hat", "*", "dhat", "*", "khat", "*", "rhohat"}], "-", 
+          
+          RowBox[{"beta2hat", "*", "dhat", "*", "khat"}], "+", 
+          RowBox[{"beta2hat", "*", "gamma2hat", "*", "khat", "*", "rhohat"}], 
+          "-", 
+          RowBox[{"beta2hat", "*", "gamma2hat", "*", "khat"}], "+", 
+          RowBox[{"beta2hat", "*", "khat", "*", "rhat", "*", "rhohat"}], "-", 
+          
+          RowBox[{"beta2hat", "*", "khat", "*", "rhat"}], "-", 
+          RowBox[{"beta3hat", "*", "dhat", "*", "khat", "*", "rhohat"}], "-", 
+          
+          RowBox[{"beta3hat", "*", "gamma1hat", "*", "khat", "*", "rhohat"}], 
+          "-", 
+          RowBox[{"beta3hat", "*", "khat", "*", "rhat", "*", "rhohat"}]}], 
+         ")"}], "*", "beta3", "*", "k", "*", "rho", "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "alpha"}], "+", "gamma1", "-", "gamma2"}], ")"}]}], 
+       ")"}]}]}], "}"}]}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.7945696147604017`*^9, 3.794569617566848*^9}, {
+   3.794569674799955*^9, 3.794570011546986*^9}, {3.796472491180209*^9, 
+   3.796472937316827*^9}, 3.796473018831746*^9, {3.7964732936787853`*^9, 
+   3.7964733057698936`*^9}, 3.79647339930758*^9, 3.796473460116529*^9, {
+   3.796473490511758*^9, 3.7964734951926327`*^9}, 3.797128763814041*^9, 
+   3.797128806461734*^9, {3.7971289540893707`*^9, 3.7971289565162773`*^9}, {
+   3.797129041636073*^9, 3.79712914387254*^9}, {3.797129180033597*^9, 
+   3.797129219631053*^9}, 3.797129250248621*^9, {3.7971294024508657`*^9, 
+   3.797129413949629*^9}, 3.797255750161293*^9, {3.797256018169642*^9, 
+   3.7972562858306704`*^9}, {3.7972563266605062`*^9, 3.797256356870604*^9}, {
+   3.797256461515486*^9, 3.797256551286397*^9}, {3.797257642199286*^9, 
+   3.797257810415959*^9}, {3.797258849064084*^9, 3.797258994224292*^9}, {
+   3.7972596237640867`*^9, 3.7972596466487722`*^9}, {3.802453456456038*^9, 
+   3.802453478420865*^9}, {3.802453510727632*^9, 3.802453539164631*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"34c138e7-96ee-4182-b6f9-8f809101062e"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "alphahat"}], " ", "beta1hat", " ", "beta3", " ", "dhat", 
+     " ", 
+     RowBox[{"(", 
+      RowBox[{"alpha", "-", "gamma1", "+", "gamma2"}], ")"}], " ", "k", " ", 
+     "rho"}], "+", 
+    RowBox[{"alpha", " ", "beta1", " ", "beta3hat", " ", "d", " ", 
+     RowBox[{"(", 
+      RowBox[{"alphahat", "-", "gamma1hat", "+", "gamma2hat"}], ")"}], " ", 
+     "khat", " ", "rhohat"}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "beta1hat"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "beta1"}], " ", "gamma1"}], "-", 
+       RowBox[{"beta2", " ", "k"}], "+", 
+       RowBox[{"beta2", " ", "k", " ", "rho"}], "-", 
+       RowBox[{"beta3", " ", "k", " ", "rho"}]}], ")"}]}], "+", 
+    RowBox[{"beta1", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "beta1hat"}], " ", "gamma1hat"}], "-", 
+       RowBox[{"beta2hat", " ", "khat"}], "+", 
+       RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+       RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], ")"}]}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", "alphahat"}], " ", "beta1hat", " ", "beta3", " ", "dhat", 
+     " ", "k", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"alpha", " ", "d"}], "-", 
+       RowBox[{"d", " ", "gamma1"}], "+", 
+       RowBox[{"d", " ", "gamma2"}], "+", 
+       RowBox[{"alpha", " ", "r"}], "-", 
+       RowBox[{"gamma1", " ", "r"}], "+", 
+       RowBox[{"gamma2", " ", "r"}]}], ")"}], " ", "rho"}], "+", 
+    RowBox[{
+    "alpha", " ", "beta1", " ", "beta3hat", " ", "d", " ", "khat", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"alphahat", " ", "dhat"}], "-", 
+       RowBox[{"dhat", " ", "gamma1hat"}], "+", 
+       RowBox[{"dhat", " ", "gamma2hat"}], "+", 
+       RowBox[{"alphahat", " ", "rhat"}], "-", 
+       RowBox[{"gamma1hat", " ", "rhat"}], "+", 
+       RowBox[{"gamma2hat", " ", "rhat"}]}], ")"}], " ", "rhohat"}]}], ",", 
+   RowBox[{
+    RowBox[{"alphahat", " ", "beta1hat", " ", "beta3", " ", "dhat", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1", "-", "gamma2"}], ")"}], " ", 
+     "k", " ", 
+     RowBox[{"(", 
+      RowBox[{"alphahat", "+", "dhat", "+", "gamma2hat", "+", "rhat"}], ")"}],
+      " ", "rho"}], "-", 
+    RowBox[{"alpha", " ", "beta1", " ", "beta3hat", " ", "d", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "alphahat"}], "+", "gamma1hat", "-", "gamma2hat"}], ")"}],
+      " ", "khat", " ", 
+     RowBox[{"(", 
+      RowBox[{"alpha", "+", "d", "+", "gamma2", "+", "r"}], ")"}], " ", 
+     "rhohat"}]}], ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "alphahat"}], "+", "gamma1hat", "-", "gamma2hat"}], ")"}],
+      " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"alpha", " ", 
+        SuperscriptBox["d", "2"]}], "-", 
+       RowBox[{
+        SuperscriptBox["d", "2"], " ", "gamma1"}], "+", 
+       RowBox[{
+        SuperscriptBox["d", "2"], " ", "gamma2"}], "+", 
+       RowBox[{"2", " ", "alpha", " ", "d", " ", "r"}], "-", 
+       RowBox[{"2", " ", "d", " ", "gamma1", " ", "r"}], "+", 
+       RowBox[{"2", " ", "d", " ", "gamma2", " ", "r"}], "+", 
+       RowBox[{"alpha", " ", 
+        SuperscriptBox["r", "2"]}], "-", 
+       RowBox[{"gamma1", " ", 
+        SuperscriptBox["r", "2"]}], "+", 
+       RowBox[{"gamma2", " ", 
+        SuperscriptBox["r", "2"]}]}], ")"}]}], "-", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1", "-", "gamma2"}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"alphahat", " ", 
+        SuperscriptBox["dhat", "2"]}], "-", 
+       RowBox[{
+        SuperscriptBox["dhat", "2"], " ", "gamma1hat"}], "+", 
+       RowBox[{
+        SuperscriptBox["dhat", "2"], " ", "gamma2hat"}], "+", 
+       RowBox[{"2", " ", "alphahat", " ", "dhat", " ", "rhat"}], "-", 
+       RowBox[{"2", " ", "dhat", " ", "gamma1hat", " ", "rhat"}], "+", 
+       RowBox[{"2", " ", "dhat", " ", "gamma2hat", " ", "rhat"}], "+", 
+       RowBox[{"alphahat", " ", 
+        SuperscriptBox["rhat", "2"]}], "-", 
+       RowBox[{"gamma1hat", " ", 
+        SuperscriptBox["rhat", "2"]}], "+", 
+       RowBox[{"gamma2hat", " ", 
+        SuperscriptBox["rhat", "2"]}]}], ")"}]}]}], ",", 
+   RowBox[{
+    RowBox[{"alpha", " ", "beta3hat", " ", "d", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "alphahat"}], "+", "gamma1hat", "-", "gamma2hat"}], ")"}],
+      " ", "khat", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "alpha"}], " ", "beta1", " ", "gamma1"}], "-", 
+       RowBox[{"beta1", " ", "d", " ", "gamma1"}], "-", 
+       RowBox[{"beta1", " ", "gamma1", " ", "gamma2"}], "-", 
+       RowBox[{"alpha", " ", "beta2", " ", "k"}], "-", 
+       RowBox[{"beta2", " ", "d", " ", "k"}], "-", 
+       RowBox[{"beta2", " ", "gamma2", " ", "k"}], "-", 
+       RowBox[{"beta1", " ", "gamma1", " ", "r"}], "-", 
+       RowBox[{"beta2", " ", "k", " ", "r"}], "+", 
+       RowBox[{"alpha", " ", "beta2", " ", "k", " ", "rho"}], "+", 
+       RowBox[{"beta2", " ", "d", " ", "k", " ", "rho"}], "-", 
+       RowBox[{"beta3", " ", "d", " ", "k", " ", "rho"}], "-", 
+       RowBox[{"beta3", " ", "gamma1", " ", "k", " ", "rho"}], "+", 
+       RowBox[{"beta2", " ", "gamma2", " ", "k", " ", "rho"}], "+", 
+       RowBox[{"beta2", " ", "k", " ", "r", " ", "rho"}], "-", 
+       RowBox[{"beta3", " ", "k", " ", "r", " ", "rho"}]}], ")"}], " ", 
+     "rhohat"}], "-", 
+    RowBox[{"alphahat", " ", "beta3", " ", "dhat", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1", "-", "gamma2"}], ")"}], " ", 
+     "k", " ", "rho", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "alphahat"}], " ", "beta1hat", " ", "gamma1hat"}], "-", 
+       RowBox[{"beta1hat", " ", "dhat", " ", "gamma1hat"}], "-", 
+       RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "-", 
+       RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "-", 
+       RowBox[{"beta2hat", " ", "dhat", " ", "khat"}], "-", 
+       RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "-", 
+       RowBox[{"beta1hat", " ", "gamma1hat", " ", "rhat"}], "-", 
+       RowBox[{"beta2hat", " ", "khat", " ", "rhat"}], "+", 
+       RowBox[{"alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+       RowBox[{"beta2hat", " ", "dhat", " ", "khat", " ", "rhohat"}], "-", 
+       RowBox[{"beta3hat", " ", "dhat", " ", "khat", " ", "rhohat"}], "-", 
+       RowBox[{"beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+       "+", 
+       RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}], 
+       "+", 
+       RowBox[{"beta2hat", " ", "khat", " ", "rhat", " ", "rhohat"}], "-", 
+       RowBox[{"beta3hat", " ", "khat", " ", "rhat", " ", "rhohat"}]}], 
+      ")"}]}]}]}], "}"}]], "Output",
+ CellChangeTimes->{3.797256358205433*^9, 3.797256561585935*^9, 
+  3.797257814139082*^9, 3.7972589977609243`*^9, 3.797259654416286*^9, 
+  3.800700596029908*^9, 3.8007009916201*^9, 3.800701032863099*^9, 
+  3.800701965220832*^9, 3.8007023916864243`*^9, 3.800702494888159*^9, 
+  3.800716480375139*^9, 3.8007200689158993`*^9, 3.80072021898907*^9, 
+  3.80245271588643*^9, 3.8025276540944767`*^9},
+ CellLabel->"Out[1]=",ExpressionUUID->"67d240af-895c-4b63-84af-0e82f72583ce"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"solx", " ", "=", " ", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{"polys", "\[Equal]", " ", "0"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+     "beta1", ",", "beta2", ",", "beta3", ",", "k", ",", "gamma1", ",", 
+      "gamma2", ",", "d", ",", "rho", ",", "r"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7972559234537373`*^9, 3.797255935509984*^9}, {
+  3.8007023776609287`*^9, 3.80070237989395*^9}, {3.800702583295143*^9, 
+  3.800702585207205*^9}, {3.800702767648961*^9, 3.800702769229084*^9}, {
+  3.8007202425045967`*^9, 3.800720243776787*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"88f58314-f66e-4f0d-80bc-b05c6f3ee8d3"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Solve", "svars", 
+   "\"Equations may not give solutions for all \\\"solve\\\" variables.\"", 2,
+    2, 1, 21757651186196063693, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.800702394748107*^9, 3.8007025035989027`*^9, 3.800702589027125*^9, 
+   3.800702775267026*^9, 3.800703244722563*^9, 3.800716489591774*^9, 
+   3.800720082137311*^9, {3.800720231786447*^9, 3.800720249441063*^9}, 
+   3.802452727509653*^9, 3.802527661673706*^9},
+ CellLabel->
+  "During evaluation of \
+In[2]:=",ExpressionUUID->"7736dc00-372c-4cb9-917f-de79f2ddcff8"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"beta1", " ", "beta1hat", " ", "gamma1"}], "-", 
+        RowBox[{"beta1", " ", "beta1hat", " ", "gamma1hat"}], "-", 
+        RowBox[{"beta1", " ", "beta2hat", " ", "khat"}], "+", 
+        RowBox[{"beta1hat", " ", "beta3", " ", "k", " ", "rho"}], "+", 
+        RowBox[{"beta1", " ", "beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+        RowBox[{"beta1", " ", "beta3hat", " ", "khat", " ", "rhohat"}]}], 
+       RowBox[{"beta1hat", " ", "k", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "rho"}], ")"}]}]]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{"beta3", " ", "rho"}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "rho"}]]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"k", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "d"}], "-", "dhat", "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"k", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "d"}], "+", "dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"k", "\[Rule]", "0"}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta2", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "d"}], "-", "dhat", "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta2", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "d"}], "+", "dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{"beta1", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"beta1hat", " ", "gamma1"}], "-", 
+          RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+          RowBox[{"beta2hat", " ", "khat"}], "+", 
+          RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+          RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], ")"}]}], 
+       RowBox[{"beta1hat", " ", "k", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "rho"}], ")"}]}]]}], ",", 
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "dhat"}], "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{"beta1", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"beta1hat", " ", "gamma1"}], "-", 
+          RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+          RowBox[{"beta2hat", " ", "khat"}], "+", 
+          RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+          RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], ")"}]}], 
+       RowBox[{"beta1hat", " ", "k", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "rho"}], ")"}]}]]}], ",", 
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{"dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"beta1", " ", "beta1hat", " ", "gamma1"}], "-", 
+        RowBox[{"beta1", " ", "beta1hat", " ", "gamma1hat"}], "-", 
+        RowBox[{"beta1", " ", "beta2hat", " ", "khat"}], "+", 
+        RowBox[{"beta1hat", " ", "beta3", " ", "k", " ", "rho"}], "+", 
+        RowBox[{"beta1", " ", "beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+        RowBox[{"beta1", " ", "beta3hat", " ", "khat", " ", "rhohat"}]}], 
+       RowBox[{"beta1hat", " ", "k", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "rho"}], ")"}]}]]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "dhat"}], "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"beta1", " ", "beta1hat", " ", "gamma1"}], "-", 
+        RowBox[{"beta1", " ", "beta1hat", " ", "gamma1hat"}], "-", 
+        RowBox[{"beta1", " ", "beta2hat", " ", "khat"}], "+", 
+        RowBox[{"beta1hat", " ", "beta3", " ", "k", " ", "rho"}], "+", 
+        RowBox[{"beta1", " ", "beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+        RowBox[{"beta1", " ", "beta3hat", " ", "khat", " ", "rhohat"}]}], 
+       RowBox[{"beta1hat", " ", "k", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "rho"}], ")"}]}]]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{"dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "beta1"}], " ", "beta1hat", " ", "gamma1"}], "+", 
+        RowBox[{"beta1", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+        RowBox[{"beta1", " ", "beta2hat", " ", "khat"}], "-", 
+        RowBox[{"beta1", " ", "beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+        RowBox[{"beta1", " ", "beta3hat", " ", "khat", " ", "rhohat"}]}], 
+       RowBox[{"beta1hat", " ", "k"}]]}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "dhat"}], "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "beta1"}], " ", "beta1hat", " ", "gamma1"}], "+", 
+        RowBox[{"beta1", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+        RowBox[{"beta1", " ", "beta2hat", " ", "khat"}], "-", 
+        RowBox[{"beta1", " ", "beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+        RowBox[{"beta1", " ", "beta3hat", " ", "khat", " ", "rhohat"}]}], 
+       RowBox[{"beta1hat", " ", "k"}]]}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{"dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", 
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"beta1hat", " ", "beta3", " ", "k"}], 
+        RowBox[{
+         RowBox[{"beta1hat", " ", "gamma1"}], "-", 
+         RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+         RowBox[{"beta2hat", " ", "khat"}], "+", 
+         RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+         RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}]]}]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{"beta3", " ", "rho"}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "rho"}]]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "d"}], "-", "dhat", "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{"beta3", " ", "rho"}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "rho"}]]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "d"}], "+", "dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"k", "\[Rule]", "0"}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "dhat"}], "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"k", "\[Rule]", "0"}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{"dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k", "\[Rule]", "0"}], ",", 
+     RowBox[{"gamma1", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+        RowBox[{"beta2hat", " ", "khat"}], "-", 
+        RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+        RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], "beta1hat"]}], 
+     ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "alpha"}], " ", "beta1hat"}], "+", 
+        RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+        RowBox[{"beta2hat", " ", "khat"}], "-", 
+        RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+        RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], "beta1hat"]}], 
+     ",", 
+     RowBox[{"d", "\[Rule]", "0"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k", "\[Rule]", "0"}], ",", 
+     RowBox[{"gamma1", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+        RowBox[{"beta2hat", " ", "khat"}], "-", 
+        RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+        RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], "beta1hat"]}], 
+     ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "dhat"}], "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"k", "\[Rule]", "0"}], ",", 
+     RowBox[{"gamma1", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+        RowBox[{"beta2hat", " ", "khat"}], "-", 
+        RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+        RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], "beta1hat"]}], 
+     ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{"dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"k", "\[Rule]", "0"}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta2", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "d"}], "-", "dhat", "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta2", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "d"}], "+", "dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "d"}], "-", "dhat", "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "d"}], "+", "dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "dhat"}], "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{"dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"gamma1", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+        RowBox[{"beta2hat", " ", "khat"}], "-", 
+        RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+        RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], "beta1hat"]}], 
+     ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "alpha"}], " ", "beta1hat"}], "+", 
+        RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+        RowBox[{"beta2hat", " ", "khat"}], "-", 
+        RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+        RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], "beta1hat"]}], 
+     ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"gamma1", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+        RowBox[{"beta2hat", " ", "khat"}], "-", 
+        RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+        RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], "beta1hat"]}], 
+     ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "dhat"}], "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"gamma1", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+        RowBox[{"beta2hat", " ", "khat"}], "-", 
+        RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+        RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], "beta1hat"]}], 
+     ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{"dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", 
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"beta1hat", " ", "beta3", " ", "k"}], 
+        RowBox[{
+         RowBox[{"beta1hat", " ", "gamma1"}], "-", 
+         RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+         RowBox[{"beta2hat", " ", "khat"}], "+", 
+         RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+         RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}]]}]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "dhat"}], "-", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", 
+      RowBox[{"-", 
+       FractionBox[
+        RowBox[{"beta1hat", " ", "beta3", " ", "k"}], 
+        RowBox[{
+         RowBox[{"beta1hat", " ", "gamma1"}], "-", 
+         RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+         RowBox[{"beta2hat", " ", "khat"}], "+", 
+         RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+         RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}]]}]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}], ",", 
+     RowBox[{"d", "\[Rule]", "0"}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      RowBox[{"dhat", "+", "rhat"}]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta2", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"d", "\[Rule]", 
+      FractionBox[
+       RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"alpha", " ", "dhat"}], "-", 
+        RowBox[{"alphahat", " ", "dhat"}], "+", 
+        RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{"beta3", " ", "rho"}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "rho"}]]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "gamma1"}]}], ",", 
+     RowBox[{"d", "\[Rule]", 
+      FractionBox[
+       RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"alpha", " ", "dhat"}], "-", 
+        RowBox[{"alphahat", " ", "dhat"}], "+", 
+        RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", 
+      FractionBox[
+       RowBox[{"beta1hat", " ", "beta3", " ", 
+        RowBox[{"(", 
+         RowBox[{"alphahat", "-", "gamma1", "+", "gamma2hat"}], ")"}], " ", 
+        "k", " ", "rho"}], 
+       RowBox[{"beta3hat", " ", 
+        RowBox[{"(", 
+         RowBox[{"alphahat", "-", "gamma1hat", "+", "gamma2hat"}], ")"}], " ",
+         "khat", " ", "rhohat"}]]}], ",", 
+     RowBox[{"beta2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"beta3", " ", "rho", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1"}], "-", 
+           RowBox[{"beta1hat", " ", 
+            SuperscriptBox["gamma1", "2"]}], "-", 
+           RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+           RowBox[{"beta1hat", " ", "gamma1", " ", "gamma1hat"}], "+", 
+           RowBox[{"beta1hat", " ", "gamma1", " ", "gamma2hat"}], "-", 
+           RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "-", 
+           RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+           RowBox[{"beta2hat", " ", "gamma1", " ", "khat"}], "-", 
+           RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "+", 
+           RowBox[{"alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], 
+           "-", 
+           RowBox[{"beta2hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], 
+           "+", 
+           RowBox[{"beta3hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], 
+           "-", 
+           RowBox[{"beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}],
+            "+", 
+           RowBox[{
+           "beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+          ")"}]}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"beta3hat", " ", 
+         RowBox[{"(", 
+          RowBox[{"alphahat", "-", "gamma1hat", "+", "gamma2hat"}], ")"}], 
+         " ", "khat", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"-", "1"}], "+", "rho"}], ")"}], " ", "rhohat"}], 
+        ")"}]}]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "alphahat", "+", "gamma2hat"}]}], ",", 
+     RowBox[{"d", "\[Rule]", 
+      FractionBox[
+       RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"alpha", " ", "dhat"}], "-", 
+        RowBox[{"alphahat", " ", "dhat"}], "+", 
+        RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta2", "\[Rule]", "0"}], ",", 
+     RowBox[{"d", "\[Rule]", 
+      FractionBox[
+       RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+     RowBox[{"rho", "\[Rule]", "0"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"alpha", " ", "dhat"}], "-", 
+        RowBox[{"alphahat", " ", "dhat"}], "+", 
+        RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", "0"}], ",", 
+     RowBox[{"beta3", "\[Rule]", "0"}], ",", 
+     RowBox[{"d", "\[Rule]", 
+      FractionBox[
+       RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"alpha", " ", "dhat"}], "-", 
+        RowBox[{"alphahat", " ", "dhat"}], "+", 
+        RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          FractionBox["1", "2"], " ", "alphahat", " ", "beta1hat", " ", 
+          "beta3", " ", "k"}], "-", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta1hat", " ", "beta3", " ", 
+          "gamma1hat", " ", "k"}], "+", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta1hat", " ", "beta3", " ", 
+          "gamma2hat", " ", "k"}], "-", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta2hat", " ", "beta3", " ", "k", " ",
+           "khat"}], "+", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta2hat", " ", "beta3", " ", "k", " ",
+           "khat", " ", "rhohat"}], "-", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta3", " ", "beta3hat", " ", "k", " ",
+           "khat", " ", "rhohat"}], "+", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta3", " ", "k", " ", 
+          RowBox[{"\[Sqrt]", 
+           RowBox[{"(", 
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", "alphahat"}], " ", "beta1hat"}], "-", 
+                RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+                RowBox[{"beta1hat", " ", "gamma2hat"}], "-", 
+                RowBox[{"beta2hat", " ", "khat"}], "+", 
+                RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+                RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], ")"}], 
+              "2"], "-", 
+             RowBox[{"4", " ", "beta1hat", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+                
+                RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "+", 
+                RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+                RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "-", 
+                RowBox[{
+                "alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], 
+                "+", 
+                RowBox[{
+                "beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+                "-", 
+                RowBox[{
+                "beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+               ")"}]}]}], ")"}]}]}]}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"alphahat", " ", "beta3hat", " ", "khat", " ", "rhohat"}], 
+         "-", 
+         RowBox[{"beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+         "+", 
+         RowBox[{"beta3hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}],
+         ")"}]}]}], ",", 
+     RowBox[{"gamma1", "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{"2", " ", "beta1hat"}]], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"alphahat", " ", "beta1hat"}], "+", 
+         RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+         RowBox[{"beta1hat", " ", "gamma2hat"}], "+", 
+         RowBox[{"beta2hat", " ", "khat"}], "-", 
+         RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+         RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}], "-", 
+         RowBox[{"\[Sqrt]", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"-", "alphahat"}], " ", "beta1hat"}], "-", 
+               RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+               RowBox[{"beta1hat", " ", "gamma2hat"}], "-", 
+               RowBox[{"beta2hat", " ", "khat"}], "+", 
+               RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+               RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], ")"}], 
+             "2"], "-", 
+            RowBox[{"4", " ", "beta1hat", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+               RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "+", 
+               
+               RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+               RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "-", 
+               RowBox[{
+               "alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+               RowBox[{
+               "beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+               "-", 
+               RowBox[{
+               "beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+              ")"}]}]}], ")"}]}]}], ")"}]}]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "alphahat", "+", "gamma2hat"}]}], ",", 
+     RowBox[{"d", "\[Rule]", 
+      FractionBox[
+       RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"alpha", " ", "dhat"}], "-", 
+        RowBox[{"alphahat", " ", "dhat"}], "+", 
+        RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          FractionBox["1", "2"], " ", "alphahat", " ", "beta1hat", " ", 
+          "beta3", " ", "k"}], "-", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta1hat", " ", "beta3", " ", 
+          "gamma1hat", " ", "k"}], "+", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta1hat", " ", "beta3", " ", 
+          "gamma2hat", " ", "k"}], "-", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta2hat", " ", "beta3", " ", "k", " ",
+           "khat"}], "+", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta2hat", " ", "beta3", " ", "k", " ",
+           "khat", " ", "rhohat"}], "-", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta3", " ", "beta3hat", " ", "k", " ",
+           "khat", " ", "rhohat"}], "-", 
+         RowBox[{
+          FractionBox["1", "2"], " ", "beta3", " ", "k", " ", 
+          RowBox[{"\[Sqrt]", 
+           RowBox[{"(", 
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", "alphahat"}], " ", "beta1hat"}], "-", 
+                RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+                RowBox[{"beta1hat", " ", "gamma2hat"}], "-", 
+                RowBox[{"beta2hat", " ", "khat"}], "+", 
+                RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+                RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], ")"}], 
+              "2"], "-", 
+             RowBox[{"4", " ", "beta1hat", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+                
+                RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "+", 
+                RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+                RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "-", 
+                RowBox[{
+                "alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], 
+                "+", 
+                RowBox[{
+                "beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+                "-", 
+                RowBox[{
+                "beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+               ")"}]}]}], ")"}]}]}]}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"alphahat", " ", "beta3hat", " ", "khat", " ", "rhohat"}], 
+         "-", 
+         RowBox[{"beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+         "+", 
+         RowBox[{"beta3hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}],
+         ")"}]}]}], ",", 
+     RowBox[{"gamma1", "\[Rule]", 
+      RowBox[{
+       FractionBox["1", 
+        RowBox[{"2", " ", "beta1hat"}]], 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"alphahat", " ", "beta1hat"}], "+", 
+         RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+         RowBox[{"beta1hat", " ", "gamma2hat"}], "+", 
+         RowBox[{"beta2hat", " ", "khat"}], "-", 
+         RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+         RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}], "+", 
+         RowBox[{"\[Sqrt]", 
+          RowBox[{"(", 
+           RowBox[{
+            SuperscriptBox[
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"-", "alphahat"}], " ", "beta1hat"}], "-", 
+               RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+               RowBox[{"beta1hat", " ", "gamma2hat"}], "-", 
+               RowBox[{"beta2hat", " ", "khat"}], "+", 
+               RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+               RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], ")"}], 
+             "2"], "-", 
+            RowBox[{"4", " ", "beta1hat", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+               RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "+", 
+               
+               RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+               RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "-", 
+               RowBox[{
+               "alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+               RowBox[{
+               "beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+               "-", 
+               RowBox[{
+               "beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+              ")"}]}]}], ")"}]}]}], ")"}]}]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "alpha"}], "+", "alphahat", "+", "gamma2hat"}]}], ",", 
+     RowBox[{"d", "\[Rule]", 
+      FractionBox[
+       RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"alpha", " ", "dhat"}], "-", 
+        RowBox[{"alphahat", " ", "dhat"}], "+", 
+        RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.800703244734458*^9, 3.8007164896055403`*^9, 3.800720082178794*^9, {
+   3.800720231826084*^9, 3.800720249454596*^9}, 3.802452727520759*^9, 
+   3.802527661684375*^9},
+ CellLabel->"Out[2]=",ExpressionUUID->"42e05c43-15d9-49f9-91d5-c9c0cfdc0dfd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"solposx", " ", "=", " ", 
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"polys", "\[Equal]", " ", "0"}], ",", 
+      RowBox[{"beta1", ">", "0"}], ",", 
+      RowBox[{"beta2", " ", ">", "0"}], ",", 
+      RowBox[{"beta3", " ", ">", "0"}], ",", 
+      RowBox[{"k", ">", "0"}], ",", 
+      RowBox[{"gamma1", ">", "0"}], ",", 
+      RowBox[{"gamma2", ">", "0"}], ",", 
+      RowBox[{"d", ">", "0"}], ",", 
+      RowBox[{"rho", ">", "0"}], ",", 
+      RowBox[{"alpha", ">", "0"}], ",", 
+      RowBox[{"r", ">", "0"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+     "beta1", ",", "beta2", ",", "beta3", ",", "k", ",", "gamma1", ",", 
+      "gamma2", ",", "d", ",", "rho", ",", "alpha", ",", "r"}], "}"}]}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.800702784586006*^9, 3.800702873307611*^9}},
+ CellLabel->"In[59]:=",ExpressionUUID->"552fbc17-fbe7-4387-ad66-a9904ad9affe"],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.800702848179427*^9, 3.800702942877945*^9},
+ CellLabel->"Out[59]=",ExpressionUUID->"5f4ded3a-0ef8-442b-bec9-f9a9a26e1f1b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Select", "[", 
+  RowBox[{"solx", ",", 
+   RowBox[{"Unequal", "[", "0", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.802452865875368*^9, 3.802452969577471*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"7bded8c6-dd2e-4df6-be53-7b0f40b9605a"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{3.802452900466351*^9, 3.8024529331872787`*^9, 
+  3.802452973324829*^9},
+ CellLabel->"Out[7]=",ExpressionUUID->"e145a71b-3be3-443d-ae62-64c57112a6c7"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PositiveSolns", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"beta1", "\[Rule]", 
+       FractionBox[
+        RowBox[{"beta1hat", " ", "beta3", " ", 
+         RowBox[{"(", 
+          RowBox[{"alphahat", "-", "gamma1", "+", "gamma2hat"}], ")"}], " ", 
+         "k", " ", "rho"}], 
+        RowBox[{"beta3hat", " ", 
+         RowBox[{"(", 
+          RowBox[{"alphahat", "-", "gamma1hat", "+", "gamma2hat"}], ")"}], 
+         " ", "khat", " ", "rhohat"}]]}], ",", 
+      RowBox[{"beta2", "\[Rule]", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"beta3", " ", "rho", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1"}], "-", 
+            RowBox[{"beta1hat", " ", 
+             SuperscriptBox["gamma1", "2"]}], "-", 
+            RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+            RowBox[{"beta1hat", " ", "gamma1", " ", "gamma1hat"}], "+", 
+            RowBox[{"beta1hat", " ", "gamma1", " ", "gamma2hat"}], "-", 
+            RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "-", 
+            RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+            RowBox[{"beta2hat", " ", "gamma1", " ", "khat"}], "-", 
+            RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "+", 
+            RowBox[{"alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}],
+             "-", 
+            RowBox[{"beta2hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], 
+            "+", 
+            RowBox[{"beta3hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], 
+            "-", 
+            RowBox[{
+            "beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], "+", 
+            RowBox[{
+            "beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+           ")"}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{"beta3hat", " ", 
+          RowBox[{"(", 
+           RowBox[{"alphahat", "-", "gamma1hat", "+", "gamma2hat"}], ")"}], 
+          " ", "khat", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", "1"}], "+", "rho"}], ")"}], " ", "rhohat"}], 
+         ")"}]}]}], ",", 
+      RowBox[{"gamma2", "\[Rule]", 
+       RowBox[{
+        RowBox[{"-", "alpha"}], "+", "alphahat", "+", "gamma2hat"}]}], ",", 
+      RowBox[{"d", "\[Rule]", 
+       FractionBox[
+        RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+      RowBox[{"r", "\[Rule]", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"alpha", " ", "dhat"}], "-", 
+         RowBox[{"alphahat", " ", "dhat"}], "+", 
+         RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"beta1", "\[Rule]", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           FractionBox["1", "2"], " ", "alphahat", " ", "beta1hat", " ", 
+           "beta3", " ", "k"}], "-", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta1hat", " ", "beta3", " ", 
+           "gamma1hat", " ", "k"}], "+", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta1hat", " ", "beta3", " ", 
+           "gamma2hat", " ", "k"}], "-", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta2hat", " ", "beta3", " ", "k", 
+           " ", "khat"}], "+", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta2hat", " ", "beta3", " ", "k", 
+           " ", "khat", " ", "rhohat"}], "-", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta3", " ", "beta3hat", " ", "k", 
+           " ", "khat", " ", "rhohat"}], "+", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta3", " ", "k", " ", 
+           RowBox[{"\[Sqrt]", 
+            RowBox[{"(", 
+             RowBox[{
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"-", "alphahat"}], " ", "beta1hat"}], "-", 
+                 RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+                 RowBox[{"beta1hat", " ", "gamma2hat"}], "-", 
+                 RowBox[{"beta2hat", " ", "khat"}], "+", 
+                 RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+                 RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], ")"}], 
+               "2"], "-", 
+              RowBox[{"4", " ", "beta1hat", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+                 RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], 
+                 "+", 
+                 RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+                 RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "-", 
+                 RowBox[{
+                 "alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], 
+                 "+", 
+                 RowBox[{
+                 "beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+                 "-", 
+                 RowBox[{
+                 "beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}],
+                 ")"}]}]}], ")"}]}]}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"alphahat", " ", "beta3hat", " ", "khat", " ", "rhohat"}], 
+          "-", 
+          RowBox[{"beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+          "+", 
+          RowBox[{
+          "beta3hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+         ")"}]}]}], ",", 
+      RowBox[{"gamma1", "\[Rule]", 
+       RowBox[{
+        FractionBox["1", 
+         RowBox[{"2", " ", "beta1hat"}]], 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"alphahat", " ", "beta1hat"}], "+", 
+          RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+          RowBox[{"beta1hat", " ", "gamma2hat"}], "+", 
+          RowBox[{"beta2hat", " ", "khat"}], "-", 
+          RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+          RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}], "-", 
+          RowBox[{"\[Sqrt]", 
+           RowBox[{"(", 
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", "alphahat"}], " ", "beta1hat"}], "-", 
+                RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+                RowBox[{"beta1hat", " ", "gamma2hat"}], "-", 
+                RowBox[{"beta2hat", " ", "khat"}], "+", 
+                RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+                RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], ")"}], 
+              "2"], "-", 
+             RowBox[{"4", " ", "beta1hat", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+                
+                RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "+", 
+                RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+                RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "-", 
+                RowBox[{
+                "alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], 
+                "+", 
+                RowBox[{
+                "beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+                "-", 
+                RowBox[{
+                "beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+               ")"}]}]}], ")"}]}]}], ")"}]}]}], ",", 
+      RowBox[{"gamma2", "\[Rule]", 
+       RowBox[{
+        RowBox[{"-", "alpha"}], "+", "alphahat", "+", "gamma2hat"}]}], ",", 
+      RowBox[{"d", "\[Rule]", 
+       FractionBox[
+        RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+      RowBox[{"rho", "\[Rule]", "1"}], ",", 
+      RowBox[{"r", "\[Rule]", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"alpha", " ", "dhat"}], "-", 
+         RowBox[{"alphahat", " ", "dhat"}], "+", 
+         RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"beta1", "\[Rule]", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           FractionBox["1", "2"], " ", "alphahat", " ", "beta1hat", " ", 
+           "beta3", " ", "k"}], "-", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta1hat", " ", "beta3", " ", 
+           "gamma1hat", " ", "k"}], "+", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta1hat", " ", "beta3", " ", 
+           "gamma2hat", " ", "k"}], "-", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta2hat", " ", "beta3", " ", "k", 
+           " ", "khat"}], "+", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta2hat", " ", "beta3", " ", "k", 
+           " ", "khat", " ", "rhohat"}], "-", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta3", " ", "beta3hat", " ", "k", 
+           " ", "khat", " ", "rhohat"}], "-", 
+          RowBox[{
+           FractionBox["1", "2"], " ", "beta3", " ", "k", " ", 
+           RowBox[{"\[Sqrt]", 
+            RowBox[{"(", 
+             RowBox[{
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"-", "alphahat"}], " ", "beta1hat"}], "-", 
+                 RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+                 RowBox[{"beta1hat", " ", "gamma2hat"}], "-", 
+                 RowBox[{"beta2hat", " ", "khat"}], "+", 
+                 RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+                 RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], ")"}], 
+               "2"], "-", 
+              RowBox[{"4", " ", "beta1hat", " ", 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+                 RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], 
+                 "+", 
+                 RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+                 RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "-", 
+                 RowBox[{
+                 "alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], 
+                 "+", 
+                 RowBox[{
+                 "beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+                 "-", 
+                 RowBox[{
+                 "beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}],
+                 ")"}]}]}], ")"}]}]}]}], ")"}], "/", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"alphahat", " ", "beta3hat", " ", "khat", " ", "rhohat"}], 
+          "-", 
+          RowBox[{"beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+          "+", 
+          RowBox[{
+          "beta3hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+         ")"}]}]}], ",", 
+      RowBox[{"gamma1", "\[Rule]", 
+       RowBox[{
+        FractionBox["1", 
+         RowBox[{"2", " ", "beta1hat"}]], 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"alphahat", " ", "beta1hat"}], "+", 
+          RowBox[{"beta1hat", " ", "gamma1hat"}], "+", 
+          RowBox[{"beta1hat", " ", "gamma2hat"}], "+", 
+          RowBox[{"beta2hat", " ", "khat"}], "-", 
+          RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "+", 
+          RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}], "+", 
+          RowBox[{"\[Sqrt]", 
+           RowBox[{"(", 
+            RowBox[{
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"-", "alphahat"}], " ", "beta1hat"}], "-", 
+                RowBox[{"beta1hat", " ", "gamma1hat"}], "-", 
+                RowBox[{"beta1hat", " ", "gamma2hat"}], "-", 
+                RowBox[{"beta2hat", " ", "khat"}], "+", 
+                RowBox[{"beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+                RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]}], ")"}], 
+              "2"], "-", 
+             RowBox[{"4", " ", "beta1hat", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+                
+                RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "+", 
+                RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+                RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "-", 
+                RowBox[{
+                "alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], 
+                "+", 
+                RowBox[{
+                "beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+                "-", 
+                RowBox[{
+                "beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+               ")"}]}]}], ")"}]}]}], ")"}]}]}], ",", 
+      RowBox[{"gamma2", "\[Rule]", 
+       RowBox[{
+        RowBox[{"-", "alpha"}], "+", "alphahat", "+", "gamma2hat"}]}], ",", 
+      RowBox[{"d", "\[Rule]", 
+       FractionBox[
+        RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+      RowBox[{"rho", "\[Rule]", "1"}], ",", 
+      RowBox[{"r", "\[Rule]", 
+       FractionBox[
+        RowBox[{
+         RowBox[{"alpha", " ", "dhat"}], "-", 
+         RowBox[{"alphahat", " ", "dhat"}], "+", 
+         RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], "}"}]}], 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.8007031386926527`*^9, 3.800703149050891*^9}},
+ CellLabel->"In[66]:=",ExpressionUUID->"6c7a1ca8-61a9-473e-84fb-60ea03a50ea3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", 
+      RowBox[{"34.23732660887078`", " ", "beta3", " ", 
+       RowBox[{"(", 
+        RowBox[{"531.83`", "\[VeryThinSpace]", "-", "gamma1"}], ")"}], " ", 
+       "k", " ", "rho"}]}], ",", 
+     RowBox[{"beta2", "\[Rule]", 
+      FractionBox[
+       RowBox[{"159.61457626513186`", " ", "beta3", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "191.0499145977657`"}], "+", 
+          RowBox[{"114.436777952992`", " ", "gamma1"}], "-", 
+          RowBox[{"0.2145`", " ", 
+           SuperscriptBox["gamma1", "2"]}]}], ")"}], " ", "rho"}], 
+       RowBox[{
+        RowBox[{"-", "1"}], "+", "rho"}]]}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{"531.83`", "\[VeryThinSpace]", "-", "alpha"}]}], ",", 
+     RowBox[{"d", "\[Rule]", 
+      FractionBox["67.86030855999999`", "alpha"]}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"-", "67.86030855999999`"}], "+", 
+        RowBox[{"0.12869999999999998`", " ", "alpha"}]}], "alpha"]}]}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", 
+      RowBox[{"18151.09888491758`", " ", "beta3", " ", "k"}]}], ",", 
+     RowBox[{"gamma1", "\[Rule]", "1.6747372285578612`"}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{"531.83`", "\[VeryThinSpace]", "-", "alpha"}]}], ",", 
+     RowBox[{"d", "\[Rule]", 
+      FractionBox["67.86030855999999`", "alpha"]}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"-", "67.86030855999999`"}], "+", 
+        RowBox[{"0.12869999999999998`", " ", "alpha"}]}], "alpha"]}]}], "}"}],
+    ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"beta1", "\[Rule]", 
+      RowBox[{
+       RowBox[{"-", "0.0018862398830497634`"}], " ", "beta3", " ", "k"}]}], 
+     ",", 
+     RowBox[{"gamma1", "\[Rule]", "531.8300550930832`"}], ",", 
+     RowBox[{"gamma2", "\[Rule]", 
+      RowBox[{"531.83`", "\[VeryThinSpace]", "-", "alpha"}]}], ",", 
+     RowBox[{"d", "\[Rule]", 
+      FractionBox["67.86030855999999`", "alpha"]}], ",", 
+     RowBox[{"rho", "\[Rule]", "1"}], ",", 
+     RowBox[{"r", "\[Rule]", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"-", "67.86030855999999`"}], "+", 
+        RowBox[{"0.12869999999999998`", " ", "alpha"}]}], "alpha"]}]}], 
+    "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.800709647268806*^9},
+ CellLabel->"Out[66]=",ExpressionUUID->"319d1985-6348-4fb9-b647-2d43f75d9828"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"PositiveSolnsAlpha", " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"beta1", "\[Rule]", 
+     FractionBox[
+      RowBox[{"beta1hat", " ", "beta3", " ", 
+       RowBox[{"(", 
+        RowBox[{"alphahat", "-", "gamma1", "+", "gamma2hat"}], ")"}], " ", 
+       "k", " ", "rho"}], 
+      RowBox[{"beta3hat", " ", 
+       RowBox[{"(", 
+        RowBox[{"alphahat", "-", "gamma1hat", "+", "gamma2hat"}], ")"}], " ", 
+       "khat", " ", "rhohat"}]]}], ",", 
+    RowBox[{"beta2", "\[Rule]", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"beta3", " ", "rho", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1"}], "-", 
+          RowBox[{"beta1hat", " ", 
+           SuperscriptBox["gamma1", "2"]}], "-", 
+          RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+          RowBox[{"beta1hat", " ", "gamma1", " ", "gamma1hat"}], "+", 
+          RowBox[{"beta1hat", " ", "gamma1", " ", "gamma2hat"}], "-", 
+          RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "-", 
+          RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+          RowBox[{"beta2hat", " ", "gamma1", " ", "khat"}], "-", 
+          RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "+", 
+          RowBox[{"alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], 
+          "-", 
+          RowBox[{"beta2hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], 
+          "+", 
+          RowBox[{"beta3hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], 
+          "-", 
+          RowBox[{"beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+          "+", 
+          RowBox[{
+          "beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+         ")"}]}], ")"}], "/", 
+      RowBox[{"(", 
+       RowBox[{"beta3hat", " ", 
+        RowBox[{"(", 
+         RowBox[{"alphahat", "-", "gamma1hat", "+", "gamma2hat"}], ")"}], " ",
+         "khat", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", "1"}], "+", "rho"}], ")"}], " ", "rhohat"}], ")"}]}]}],
+     ",", 
+    RowBox[{"gamma2", "\[Rule]", 
+     RowBox[{
+      RowBox[{"-", "alpha"}], "+", "alphahat", "+", "gamma2hat"}]}], ",", 
+    RowBox[{"d", "\[Rule]", 
+     FractionBox[
+      RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+    RowBox[{"r", "\[Rule]", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"alpha", " ", "dhat"}], "-", 
+       RowBox[{"alphahat", " ", "dhat"}], "+", 
+       RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], 
+   "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"alpha", " ", "=", " ", "alphahat"}], ";", " ", 
+  RowBox[{"gamma1", " ", "=", " ", "gamma1hat"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.800719894312539*^9, 3.800719958329502*^9}, {
+  3.802532397441657*^9, 3.802532418571197*^9}},
+ CellLabel->"In[10]:=",ExpressionUUID->"a81cde28-cf7a-4e05-9978-62794023b12c"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"beta1", "\[Rule]", 
+    FractionBox[
+     RowBox[{"beta1hat", " ", "beta3", " ", "k", " ", "rho"}], 
+     RowBox[{"beta3hat", " ", "khat", " ", "rhohat"}]]}], ",", 
+   RowBox[{"beta2", "\[Rule]", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"beta3", " ", "rho", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "alphahat"}], " ", "beta2hat", " ", "khat"}], "+", 
+         RowBox[{"beta2hat", " ", "gamma1hat", " ", "khat"}], "-", 
+         RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "+", 
+         RowBox[{"alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], 
+         "-", 
+         RowBox[{"beta2hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+         "+", 
+         RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}],
+         ")"}]}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{"beta3hat", " ", 
+       RowBox[{"(", 
+        RowBox[{"alphahat", "-", "gamma1hat", "+", "gamma2hat"}], ")"}], " ", 
+       "khat", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "rho"}], ")"}], " ", "rhohat"}], ")"}]}]}], 
+   ",", 
+   RowBox[{"gamma2", "\[Rule]", "gamma2hat"}], ",", 
+   RowBox[{"d", "\[Rule]", "dhat"}], ",", 
+   RowBox[{"r", "\[Rule]", "rhat"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.800719916377864*^9, 3.800719962716133*^9}, {
+  3.802532419162861*^9, 3.80253243485427*^9}},
+ CellLabel->"Out[10]=",ExpressionUUID->"65e75b86-faec-43a5-9b74-bdf6e819f4b0"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"beta1", "\[Rule]", 
+    FractionBox[
+     RowBox[{"beta1hat", " ", "beta3", " ", 
+      RowBox[{"(", 
+       RowBox[{"alphahat", "-", "gamma1", "+", "gamma2hat"}], ")"}], " ", "k",
+       " ", "rho"}], 
+     RowBox[{"beta3hat", " ", 
+      RowBox[{"(", 
+       RowBox[{"alphahat", "-", "gamma1hat", "+", "gamma2hat"}], ")"}], " ", 
+      "khat", " ", "rhohat"}]]}], ",", 
+   RowBox[{"beta2", "\[Rule]", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"beta3", " ", "rho", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1"}], "-", 
+         RowBox[{"beta1hat", " ", 
+          SuperscriptBox["gamma1", "2"]}], "-", 
+         RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+         RowBox[{"beta1hat", " ", "gamma1", " ", "gamma1hat"}], "+", 
+         RowBox[{"beta1hat", " ", "gamma1", " ", "gamma2hat"}], "-", 
+         RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "-", 
+         RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+         RowBox[{"beta2hat", " ", "gamma1", " ", "khat"}], "-", 
+         RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "+", 
+         RowBox[{"alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], 
+         "-", 
+         RowBox[{"beta2hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], "+", 
+         RowBox[{"beta3hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], "-", 
+         RowBox[{"beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], 
+         "+", 
+         RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}],
+         ")"}]}], ")"}], "/", 
+     RowBox[{"(", 
+      RowBox[{"beta3hat", " ", 
+       RowBox[{"(", 
+        RowBox[{"alphahat", "-", "gamma1hat", "+", "gamma2hat"}], ")"}], " ", 
+       "khat", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"-", "1"}], "+", "rho"}], ")"}], " ", "rhohat"}], ")"}]}]}], 
+   ",", 
+   RowBox[{"gamma2", "\[Rule]", 
+    RowBox[{
+     RowBox[{"-", "alpha"}], "+", "alphahat", "+", "gamma2hat"}]}], ",", 
+   RowBox[{"d", "\[Rule]", 
+    FractionBox[
+     RowBox[{"alphahat", " ", "dhat"}], "alpha"]}], ",", 
+   RowBox[{"r", "\[Rule]", 
+    FractionBox[
+     RowBox[{
+      RowBox[{"alpha", " ", "dhat"}], "-", 
+      RowBox[{"alphahat", " ", "dhat"}], "+", 
+      RowBox[{"alpha", " ", "rhat"}]}], "alpha"]}]}], "}"}]], "Input",Expressi\
+onUUID->"285a78d9-b397-471d-accc-1cefdc41ba73"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FactorTermsList", "[", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1"}], "-", 
+    RowBox[{"beta1hat", " ", 
+     SuperscriptBox["gamma1", "2"]}], "-", 
+    RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+    RowBox[{"beta1hat", " ", "gamma1", " ", "gamma1hat"}], "+", 
+    RowBox[{"beta1hat", " ", "gamma1", " ", "gamma2hat"}], "-", 
+    RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "-", 
+    RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+    RowBox[{"beta2hat", " ", "gamma1", " ", "khat"}], "-", 
+    RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "+", 
+    RowBox[{"alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+    RowBox[{"beta2hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], "+", 
+    RowBox[{"beta3hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], "-", 
+    RowBox[{"beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], "+", 
+    RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}], 
+   ")"}], "]"}]], "Input",
+ CellChangeTimes->{{3.802529435527823*^9, 3.802529446756236*^9}, {
+  3.802529606025341*^9, 3.802529616361466*^9}},
+ CellLabel->"In[7]:=",ExpressionUUID->"f5254fe5-36d8-49d6-85be-1cba829812e6"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", 
+   RowBox[{
+    RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1"}], "-", 
+    RowBox[{"beta1hat", " ", 
+     SuperscriptBox["gamma1", "2"]}], "-", 
+    RowBox[{"alphahat", " ", "beta1hat", " ", "gamma1hat"}], "+", 
+    RowBox[{"beta1hat", " ", "gamma1", " ", "gamma1hat"}], "+", 
+    RowBox[{"beta1hat", " ", "gamma1", " ", "gamma2hat"}], "-", 
+    RowBox[{"beta1hat", " ", "gamma1hat", " ", "gamma2hat"}], "-", 
+    RowBox[{"alphahat", " ", "beta2hat", " ", "khat"}], "+", 
+    RowBox[{"beta2hat", " ", "gamma1", " ", "khat"}], "-", 
+    RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat"}], "+", 
+    RowBox[{"alphahat", " ", "beta2hat", " ", "khat", " ", "rhohat"}], "-", 
+    RowBox[{"beta2hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], "+", 
+    RowBox[{"beta3hat", " ", "gamma1", " ", "khat", " ", "rhohat"}], "-", 
+    RowBox[{"beta3hat", " ", "gamma1hat", " ", "khat", " ", "rhohat"}], "+", 
+    RowBox[{"beta2hat", " ", "gamma2hat", " ", "khat", " ", "rhohat"}]}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.8025294478518467`*^9, {3.802529610768182*^9, 3.802529617457116*^9}},
+ CellLabel->"Out[7]=",ExpressionUUID->"198ed532-6f60-4893-bc88-6567bc3416ef"]
+}, Open  ]]
+},
+WindowSize->{1294, 793},
+WindowMargins->{{65, Automatic}, {Automatic, 0}},
+FrontEndVersion->"12.1 for Mac OS X x86 (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"48fab895-62a6-4651-bf48-be5cdd0df24f"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 154, 2, 30, "Input",ExpressionUUID->"45505a23-a7ef-4d64-b732-313f33f96cc4"],
+Cell[715, 24, 833, 17, 73, "Input",ExpressionUUID->"a2244e5d-c8d9-4b64-bc96-e77182d982d0"],
+Cell[CellGroupData[{
+Cell[1573, 45, 9313, 212, 451, "Input",ExpressionUUID->"34c138e7-96ee-4182-b6f9-8f809101062e"],
+Cell[10889, 259, 7390, 172, 318, "Output",ExpressionUUID->"67d240af-895c-4b63-84af-0e82f72583ce"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18316, 436, 659, 13, 30, "Input",ExpressionUUID->"88f58314-f66e-4f0d-80bc-b05c6f3ee8d3"],
+Cell[18978, 451, 596, 13, 24, "Message",ExpressionUUID->"7736dc00-372c-4cb9-917f-de79f2ddcff8"],
+Cell[19577, 466, 32449, 823, 1961, "Output",ExpressionUUID->"42e05c43-15d9-49f9-91d5-c9c0cfdc0dfd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52063, 1294, 934, 23, 52, "Input",ExpressionUUID->"552fbc17-fbe7-4387-ad66-a9904ad9affe"],
+Cell[53000, 1319, 178, 2, 34, "Output",ExpressionUUID->"5f4ded3a-0ef8-442b-bec9-f9a9a26e1f1b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53215, 1326, 264, 5, 30, "Input",ExpressionUUID->"7bded8c6-dd2e-4df6-be53-7b0f40b9605a"],
+Cell[53482, 1333, 214, 4, 34, "Output",ExpressionUUID->"e145a71b-3be3-443d-ae62-64c57112a6c7"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53733, 1342, 13462, 311, 1037, "Input",ExpressionUUID->"6c7a1ca8-61a9-473e-84fb-60ea03a50ea3"],
+Cell[67198, 1655, 2572, 66, 144, "Output",ExpressionUUID->"319d1985-6348-4fb9-b647-2d43f75d9828"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[69807, 1726, 2890, 68, 271, "Input",ExpressionUUID->"a81cde28-cf7a-4e05-9978-62794023b12c"],
+Cell[72700, 1796, 1527, 37, 101, "Output",ExpressionUUID->"65e75b86-faec-43a5-9b74-bdf6e819f4b0"]
+}, Open  ]],
+Cell[74242, 1836, 2458, 58, 227, "Input",ExpressionUUID->"285a78d9-b397-471d-accc-1cefdc41ba73"],
+Cell[CellGroupData[{
+Cell[76725, 1898, 1263, 22, 100, "Input",ExpressionUUID->"f5254fe5-36d8-49d6-85be-1cba829812e6"],
+Cell[77991, 1922, 1222, 22, 81, "Output",ExpressionUUID->"198ed532-6f60-4893-bc88-6567bc3416ef"]
+}, Open  ]]
+}
+]
+*)
+

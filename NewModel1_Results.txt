@@ -1,0 +1,96 @@
+  A Corono Virus MODEL OF 6 STATE VARIABLES WITH KNOWN INITIAL CONDITIONS
+
+MODEL EQUATION(S)$
+
+c_ := {df(x1,t)=( - (beta2*x3 + beta3*x4)*x1 - beta1*x1*x2)/(x4 + x6 + x3 + x2 + x1),
+df(x2,t)=( - ((x4 + x6 + x3 + x2 + x1)*k*x2 - beta3*x1*x4 - beta2*x1*x3) + beta1*x1*x2)/(x4 + x6 + x3 + x2 + 
+x1),
+df(x3,t)= - (rho - 1)*k*x2 - gamma1*x3,
+df(x4,t)= - (gamma2*x4 - k*rho*x2) - alpha*x4,
+df(x5,t)= - (d + r)*x5 + alpha*x4,
+df(x6,t)=gamma2*x4 + r*x5 + gamma*x3,
+y1=k*rho*x2,
+y2=d*x5}$
+
+CHARACTERISTIC SET$
+
+aa_(1) :=  - df(y1,t)*alpha*beta1*d + df(y2,t)*beta3*k*rho*(alpha - gamma1 + gamma2) + y1*alpha*d*( - beta1*
+gamma1 + beta2*k*rho - beta2*k - beta3*k*rho) + y2*beta3*k*rho*(alpha*d + alpha*r - d*gamma1 + d*gamma2 - 
+gamma1*r + gamma2*r)$
+
+aa_(2) :=  - df(y1,t)*alpha*beta1*d*(alpha + d + gamma2 + r) + df(y2,t,2)*beta3*k*rho*( - alpha + gamma1 - 
+gamma2) + y1*alpha*d*( - alpha*beta1*gamma1 + alpha*beta2*k*rho - alpha*beta2*k - beta1*d*gamma1 - beta1*
+gamma1*gamma2 - beta1*gamma1*r + beta2*d*k*rho - beta2*d*k + beta2*gamma2*k*rho - beta2*gamma2*k + beta2*k*r*
+rho - beta2*k*r - beta3*d*k*rho - beta3*gamma1*k*rho - beta3*k*r*rho) + y2*beta3*k*rho*(alpha*d**2 + 2*alpha*d
+*r + alpha*r**2 - d**2*gamma1 + d**2*gamma2 - 2*d*gamma1*r + 2*d*gamma2*r - gamma1*r**2 + gamma2*r**2)$
+
+aa_(3) :=  - x2*k*rho + y1$
+
+aa_(4) := df(y1,t)*beta1 + x3*beta2*k*rho*(alpha - gamma1 + gamma2) + y1*(alpha*beta1 + beta1*gamma2 - beta2*k
+*rho + beta2*k + beta3*k*rho)$
+
+aa_(5) :=  - df(y1,t)*beta1 + x4*beta3*k*rho*(alpha - gamma1 + gamma2) + y1*( - beta1*gamma1 + beta2*k*rho - 
+beta2*k - beta3*k*rho)$
+
+aa_(6) :=  - x5*d + y2$
+
+aa_(7) := df(y1,t)*beta1*(beta2 - beta3) + x1*beta2*beta3*k*rho*(alpha - gamma1 + gamma2) + x6*beta2*beta3*k*
+rho*(alpha - gamma1 + gamma2) + y1*( - alpha*beta1*beta3 + alpha*beta2*beta3 + beta1*beta2*gamma1 - beta1*
+beta3*gamma2 - beta2**2*k*rho + beta2**2*k - beta2*beta3*gamma1 + beta2*beta3*gamma2 + 2*beta2*beta3*k*rho - 
+beta2*beta3*k - beta3**2*k*rho)$
+
+aa_(8) := df(x1,t)*beta2*beta3*d*k*rho*( - alpha + gamma1 - gamma2) + df(y1,t)*d*(alpha*beta1*beta2 - alpha*
+beta2*beta3 + beta1*beta3*gamma - beta1*beta3*gamma1 + beta2*beta3*gamma1 - beta2*beta3*gamma2) + y1*d*(alpha*
+beta1*beta2*gamma1 + alpha*beta1*beta3*gamma - alpha*beta1*beta3*gamma1 - alpha*beta2**2*k*rho + alpha*beta2**
+2*k + alpha*beta2*beta3*k*rho - alpha*beta2*beta3*k + beta1*beta3*gamma*gamma2 - beta1*beta3*gamma1*gamma2 - 
+beta2*beta3*gamma*k*rho + beta2*beta3*gamma*k + beta2*beta3*gamma1*k*rho - beta2*beta3*gamma2*k + beta3**2*
+gamma*k*rho - beta3**2*gamma1*k*rho) + y2*beta2*beta3*k*r*rho*( - alpha + gamma1 - gamma2)$
+
+MODEL NOT ALGEBRAICALLY OBSERVABLE$
+
+PARAMETER VALUES$
+
+b2_ := {beta1=2,
+beta2=3,
+beta3=5,
+k=7,
+rho=11,
+gamma1=13,
+gamma2=17,
+d=19,
+alpha=23,
+r=29}$
+
+MODEL PARAMETER SOLUTION(S)$
+
+g_ := {{beta1=( - sqrt(97801)*beta3*k - 121*beta3*k)/20790,
+r=(48*alpha - 437)/alpha,
+gamma2= - alpha + 40,
+d=437/alpha,
+rho=1,
+gamma1=(sqrt(97801) + 281)/4,
+beta2=arbcomplex(190)},
+{beta1=(sqrt(97801)*beta3*k - 121*beta3*k)/20790,
+r=(48*alpha - 437)/alpha,
+gamma2= - alpha + 40,
+d=437/alpha,
+rho=1,
+gamma1=( - sqrt(97801) + 281)/4,
+beta2=arbcomplex(191)},
+{beta1=( - 2*beta3*gamma1*k*rho + 80*beta3*k*rho)/10395,
+beta2=( - 2*beta3*gamma1**2*rho + 281*beta3*gamma1*rho + 2355*beta3*rho)/(10395*rho - 10395),
+r=(48*alpha - 437)/alpha,
+gamma2= - alpha + 40,
+d=437/alpha}}$
+
+MODEL NON IDENTIFIABLE$
+
+IDENTIFIABILITY WITH ALL INITIAL CONDITIONS (IC_)$
+
+ic_ := {x1=5,x2=1,x3=0,x4=0,x5=0,x6=0}$
+
+MODEL PARAMETER SOLUTIONS$
+
+gi_ := {}$
+
+MODEL NON IDENTIFIABLE$
